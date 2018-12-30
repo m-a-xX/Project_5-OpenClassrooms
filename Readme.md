@@ -1,0 +1,3 @@
+# Projet 5 - Utilisez les données publiques de l'OpenFoodFacts
+
+Le principe du programme à concevoir pour la startup Pur Beurre est de proposer aux gens des substituts plus sains aux produits qu'ils recherchent dans le but d'améliorer leur alimentation. Le programme permet donc de consulter les catégories de produits, puis de choisir un produit pour consulter la fiche produit de son substitut, et si l'utilisateur le souhaite d'enregistrer le résultat de la recherche dans une DB pour le consulter plus tard.
