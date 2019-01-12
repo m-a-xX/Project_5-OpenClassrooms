@@ -9,7 +9,7 @@ with open('DB_creation.sql') as f:
 
 try:
    conn = mysql.connector.connect(host="localhost", 
-                                  user="maxence", password="maxhockey")
+                                  user="maxence", password="maxence")
 
    cursor = conn.cursor()
    cursor.execute(sql_create, multi=True)
