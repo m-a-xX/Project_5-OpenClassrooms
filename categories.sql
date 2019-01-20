@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS `P5`.`Categories` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(90) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
