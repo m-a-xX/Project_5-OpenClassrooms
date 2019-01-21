@@ -57,8 +57,9 @@ def load_products():
                 url = product['url']
                 atts = (name, n, nutrition_grade, store, url, \
                         description, (i + 1))
-                cursor.execute("INSERT IGNORE Products (name, id, nutrition_\
-                                grade_fr, shop, url, description, Categories_id) \
+                cursor.execute("INSERT IGNORE Products (name, id, \
+                                nutrition_grade, shop, url, description, \
+                                Categories_id) \
                                 VALUES (%s, %s, %s, %s, %s, %s, %s)", atts)
                 n += 1
             conn.commit()

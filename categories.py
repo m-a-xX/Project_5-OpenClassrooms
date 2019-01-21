@@ -39,7 +39,7 @@ def create_db():
         sys.exit(1)
 
 
-CATS = ['Meals', 'Snacks', 'Non-Alcoholic beverages', 'Cheeses', 'Frozen foods']
+CATS = ['Meals', 'Snacks', 'Non-Alcoholic beverages', 'Biscuits', 'Frozen foods']
 
 
 def add_cats():
