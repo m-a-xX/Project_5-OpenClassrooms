@@ -20,44 +20,25 @@ associé. Vous pouvez aussi retrouver les produits que vous avez enregistrés \
 auparavant\nA CHAQUE FOIS QU'IL VOUS SERA DEMANDÉ DE FAIRE UN CHOIX, VEUILLEZ \
 ENTRER UN NOMBRE.\n")
     f_c = 6
-    try:
-        f_c = int(input("Voulez-vous consulter :\n1 : les produits des 5 \
-catégories choisies\n2 : les produits que vous avez enregistrés précedemment\
-\n"))
-    except ValueError:
-        while f_c != 1 and f_c != 2:
-            try:
-                f_c = int(input("Voules vous consulter :\n1 : les produits des \
-5 catégories choisies\n2 : les produits que vous avez enregistrés précedemment\
-\n"))
-            except ValueError:
-                f_c = int(input("Voules vous consulter :\n1 : les produits des \
-5 catégories choisies\n2 : les produits que vous avez enregistrés précedemment\
-\n"))
     while f_c != 1 and f_c != 2:
-        f_c = int(input("Voulez-vous consulter :\n1 : les produits des 5 \
+        try:
+            f_c = int(input("Voulez-vous consulter :\n1 : les produits des 5 \
 catégories choisies\n2 : les produits que vous avez enregistrés précedemment\
 \n"))
+        except ValueError:
+            continue
     print('\n')
     if f_c == 1:
         for i in range(0, 5):
             print((i + 1), " - ", CATS[i])
             print('\n')
         c_c = 6
-        try:
-            c_c = int(input("Les produits de quelle catégorie voulez-vous \
-afficher ?\n"))
-        except ValueError:
-            while c_c != 1 and c_c != 2 and c_c != 3 and c_c != 4 and c_c != 5:
-                try:
-                    c_c = int(input("Les produits de quelle catégorie voulez-\
-vous afficher ? Merci d'entrer un chiffre.\n"))
-                except ValueError:
-                    c_c = int(input("Les produits de quelle catégorie voulez-\
-vous afficher ? Merci d'entrer un chiffre.\n"))
         while c_c != 1 and c_c != 2 and c_c != 3 and c_c != 4 and c_c != 5:
-            c_c = int(input("Les produits de quelle catégorie voulez-vous \
-afficher ?\n"))
+            try:
+                c_c = int(input("Les produits de quelle catégorie voulez-\
+vous afficher ? Merci d'entrer un chiffre.\n"))
+            except ValueError:
+                continue
         try:
             conn = mysql.connector.connect(host="localhost", user="maxence",\
                                            password="maxence", database="P5")
@@ -83,20 +64,12 @@ def product():
     i = 0
     '''Choose a product and print a substitut'''
     c_p = 5001
-    try:
-        c_p = int(input("\nQuel produit voulez vous remplacer par un \
-produit plus sain ?\n"))
-    except ValueError:
-        while c_p < 0 or c_p > 5000:
-            try:
-                c_p = int(input("\nQuel produit voulez vous remplacer par un \
-produit plus sain ? Merci d'entrer un nombre.\n"))
-            except ValueError:
-                c_p = int(input("\nQuel produit voulez vous remplacer par un \
-produit plus sain ? Merci d'entrer un nombre.\n"))
     while c_p < 0 or c_p > 5000:
-        c_p = int(input("\nQuel produit voulez vous remplacer par un \
-produit plus sain ?\n"))
+        try:
+            c_p = int(input("\nQuel produit voulez vous remplacer par un \
+produit plus sain ? Merci d'entrer un nombre.\n"))
+        except ValueError:
+            continue
     try:
         conn = mysql.connector.connect(host="localhost", user="maxence",\
                                        password="maxence", database="P5")
@@ -122,20 +95,13 @@ produit plus sain ?\n"))
     except mysql.connector.errors.InterfaceError as error:
         print("Error %d: %s" % (error.args[0], error.args[1]))
         sys.exit(1)
-    try:
-        reg = int(input("\nVoulez-vous enregistrer ce produit pour pouvoir le \
-consulter plus tard ?\nNon : 0\nOui : 1\n"))
-    except ValueError:
-        while reg != 0 and reg != 1:
-            try:
-                reg = int(input("\nVoulez-vous enregistrer ce produit pour \
-pouvoir le consulter plus tard ?\nNon : 0\nOui : 1\n"))
-            except ValueError:
-                reg = int(input("\nVoulez-vous enregistrer ce produit pour \
-pouvoir le consulter plus tard ?\nNon : 0\nOui : 1\n"))
+    reg = 2
     while reg != 0 and reg != 1:
-         reg = int(input("\nVoulez-vous enregistrer ce produit pour pouvoir le \
-consulter plus tard ?\nNon : 0\nOui : 1\n"))
+        try:
+            reg = int(input("\nVoulez-vous enregistrer ce produit pour \
+pouvoir le consulter plus tard ?\nNon : 0\nOui : 1\n"))
+        except ValueError:
+            continue
     if reg == 1:
         reg_products.reg(reg_id)
     menu()
