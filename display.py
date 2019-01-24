@@ -7,6 +7,7 @@ import mysql.connector
 import reg_products
 from categories import CATS
 
+from conf import SQL_LOG, SQL_PWD
 
 def menu():
     '''Print the menu and the products of the choosen category'''
@@ -40,8 +41,8 @@ vous afficher ? Merci d'entrer un chiffre.\n"))
             except ValueError:
                 continue
         try:
-            conn = mysql.connector.connect(host="localhost", user="maxence",\
-                                           password="maxence", database="P5")
+            conn = mysql.connector.connect(host="localhost", user=SQL_LOG,\
+                                           password=SQL_PWD, database="P5")
             conn.autocommit = True
             cursor = conn.cursor()
             cursor.execute("SELECT id, name FROM Products WHERE \
@@ -61,8 +62,8 @@ vous afficher ? Merci d'entrer un chiffre.\n"))
 
 
 def product():
-    i = 0
     '''Choose a product and print a substitut'''
+    i = 0
     c_p = 5001
     while c_p < 0 or c_p > 5000:
         try:
@@ -71,8 +72,8 @@ produit plus sain ? Merci d'entrer un nombre.\n"))
         except ValueError:
             continue
     try:
-        conn = mysql.connector.connect(host="localhost", user="maxence",\
-                                       password="maxence", database="P5")
+        conn = mysql.connector.connect(host="localhost", user=SQL_LOG,\
+                                       password=SQL_PWD, database="P5")
         conn.autocommit = True
         cursor = conn.cursor()
         cursor.execute("SELECT Categories_id FROM Products WHERE \

@@ -3,10 +3,13 @@
 import sys
 import mysql.connector
 
+from conf import SQL_LOG, SQL_PWD
+
 def reg(reg_id):
+    """Register products the user want to conserve"""
     try:
-        conn = mysql.connector.connect(host="localhost", user="maxence",\
-                                           password="maxence", database="P5")
+        conn = mysql.connector.connect(host="localhost", user=SQL_LOG,\
+                                       password=SQL_PWD, database="P5")
         conn.autocommit = True
         cursor = conn.cursor()
         cursor.execute("SELECT name, Categories_id, description, shop, \
@@ -30,9 +33,10 @@ def reg(reg_id):
         sys.exit(1)
 
 def display_reg():
+    """Display register products"""
     try:
-        conn = mysql.connector.connect(host="localhost", user="maxence",\
-                                       password="maxence", database="P5")
+        conn = mysql.connector.connect(host="localhost", user=SQL_LOG,\
+                                       password=SQL_PWD, database="P5")
         conn.autocommit = True
         cursor = conn.cursor()
         cursor.execute("SELECT name, shop, url, description FROM \

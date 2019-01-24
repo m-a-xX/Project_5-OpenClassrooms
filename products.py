@@ -4,6 +4,7 @@ import requests
 import mysql.connector
 
 from categories import CATS
+from conf import SQL_LOG, SQL_PWD
 
 
 def load_products():
@@ -24,8 +25,8 @@ def load_products():
                                params=payload)
         data = reponse.json()
         try:
-            conn = mysql.connector.connect(host="localhost", user="root", \
-                                           password="root", database="P5")
+            conn = mysql.connector.connect(host="localhost", user=SQL_LOG,\
+                                           password=SQL_PWD, database="P5")
             cursor = conn.cursor()
             for product in data['products']:
 

@@ -3,6 +3,8 @@
 import sys
 import mysql.connector
 
+from conf import SQL_LOG, SQL_PWD
+
 with open('categories.sql') as f:
     CAT_CREATE = f.read()
 
@@ -16,8 +18,8 @@ with open('reg_products.sql') as f:
 def create_db():
     '''Create the database'''
     try:
-        conn = mysql.connector.connect(host="localhost", user="maxence",\
-                                       password="maxence")
+        conn = mysql.connector.connect(host="localhost", user=SQL_LOG,\
+                                       password=SQL_PWD)
         conn.autocommit = True
         cursor = conn.cursor()
         print("Création de la base de données...")
@@ -46,8 +48,8 @@ def add_cats():
     '''Add categories in the database'''
     for i in range(0, 5):
         try:
-            conn = mysql.connector.connect(host="localhost", user="maxence",\
-                                           password="maxence", database="P5")
+            conn = mysql.connector.connect(host="localhost", user=SQL_LOG,\
+                                           password=SQL_PWD, database="P5")
             conn.autocommit = True
             cursor = conn.cursor()
             cursor.execute(("INSERT IGNORE Categories (id, name) VALUES \

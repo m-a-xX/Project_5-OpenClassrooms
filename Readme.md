@@ -9,3 +9,6 @@ Pour lancer le programme, il vous suffit de cloner le repo sur votre ordinateur 
 Le programme permet :
 - de sélectionner une des 5 catégories proposées, puis de choisir un des produits appartenant à une catégorie : le programme vous affichera un substitut plus sain pour remplacer le produit ;
 - de retrouver les produits que vous avez enregistrés précédemment.
+
+## Paramètres MySQL
+Veuillez entrer votre login et votre mot de passe MySQL dans le fichier conf.py.
