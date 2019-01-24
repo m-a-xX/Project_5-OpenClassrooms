@@ -1,6 +1,4 @@
-import sys
-import requests
-import mysql.connector
+"""This file call the functions writen in other files"""
 
 import categories
 import products

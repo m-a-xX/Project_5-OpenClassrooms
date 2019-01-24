@@ -5,6 +5,7 @@ import mysql.connector
 
 from conf import SQL_LOG, SQL_PWD
 
+
 def reg(reg_id):
     """Register products the user want to conserve"""
     try:
@@ -23,7 +24,8 @@ def reg(reg_id):
             stores = row[3]
             url = row[4]
             nutrition_grade = row[5]
-        atts = (name, reg_id, cat_id, description, stores, url, nutrition_grade)
+        atts = (name, reg_id, cat_id, description, stores, url, \
+                nutrition_grade)
         cursor.execute("INSERT IGNORE Registred_products (name, id, \
                         Categories_id, description, shop, url, \
                         nutrition_grade) VALUES (%s, %s, %s, %s, %s, %s, \
@@ -31,6 +33,7 @@ def reg(reg_id):
     except mysql.connector.errors.InterfaceError as error:
         print("Error %d: %s" % (error.args[0], error.args[1]))
         sys.exit(1)
+
 
 def display_reg():
     """Display register products"""
@@ -45,7 +48,8 @@ def display_reg():
         count = 1
         for row in data:
             print("\nProduit ", count, "\nNom :", row[0], "\nMagasin(s) :", \
-                   row[1], "\nURL :", row[2], "\nDescription :", row[3], "\n\n")
+                  row[1], "\nURL :", row[2], "\nDescription :", row[3], \
+                  "\n\n")
             count += 1
     except mysql.connector.errors.InterfaceError as error:
         print("Error %d: %s" % (error.args[0], error.args[1]))

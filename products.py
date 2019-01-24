@@ -10,7 +10,7 @@ from conf import SQL_LOG, SQL_PWD
 def load_products():
     '''Import products from API and add them in the database'''
     print("Importation des produits...")
-    n = 0
+    nbr = 0
     for i in range(0, 5):
         payload = {
             'action': 'process',
@@ -39,7 +39,7 @@ def load_products():
                         pass
                 try:
                     store = product['stores']
-                except:
+                except KeyError:
                     pass
                 try:
                     description = product['generic_name_fr']
@@ -56,13 +56,13 @@ def load_products():
                     except KeyError:
                         pass
                 url = product['url']
-                atts = (name, n, nutrition_grade, store, url, \
+                atts = (name, nbr, nutrition_grade, store, url, \
                         description, (i + 1))
                 cursor.execute("INSERT IGNORE Products (name, id, \
                                 nutrition_grade, shop, url, description, \
                                 Categories_id) \
                                 VALUES (%s, %s, %s, %s, %s, %s, %s)", atts)
-                n += 1
+                nbr += 1
             conn.commit()
             cursor.close()
         except KeyError:
